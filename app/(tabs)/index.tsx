@@ -5,11 +5,10 @@ import Lottie from 'lottie-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createRandomUser } from '../../utils/generate-fake-data';
 import { ThreadsContext } from '../../context/thread-context';
-import ThreadsItem from './../../components/Threadsitem';
+import ThreadItem from '../../components/ThreadItem';
 
 const user = createRandomUser();
 
-console.log(user);
 
 export default function TabOneScreen() {
 	const animationRef = React.useRef<Lottie>(null);
@@ -38,9 +37,9 @@ export default function TabOneScreen() {
 					autoPlay={true}
 					style={{ width: 90, height: 90, alignSelf: 'center' }}
 				/>
-				{threads.map((thread) => (
-					<ThreadsItem key={thread.id} {...thread} />
-				))}
+				   {threads.map((thread) => (
+          <ThreadItem key={thread.id} thread={thread} />
+        ))}
 			</ScrollView>
 		</SafeAreaView>
 	);
